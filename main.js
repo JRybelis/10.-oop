@@ -20,8 +20,20 @@ class User {
     }
 }
 
+class Admin extends User {
+    constructor(username, email, title) {
+        super(username, email);
+        this.title = title;
+    }
+    deleteUser(user){
+        users = users.filter(u => u.username !== user.username);
+    }
+}
+
 const userOne = new User('Mario', 'mario@thenetninja.co.uk');
 const userTwo = new User('Luigi', 'luigi@thenetninja.co.uk');
+const userThree = new Admin ('Ryu', 'ryu@thenetninja.co.uk', 'black-belt');
+
 // the 'new' keyword flow:
 // 1. creates an empty object {}
 // 2. binds the value of 'this' to the new empty object inside the class being used.
@@ -31,3 +43,11 @@ const userTwo = new User('Luigi', 'luigi@thenetninja.co.uk');
 //chaining methods:
 userOne.login().incrScore().incrScore().logout();
 userTwo.login().incrScore().incrScore().logout();
+
+
+let users = [userOne, userTwo, userThree];
+
+userThree.deleteUser(userTwo);
+console.log(users);
+console.log(userThree);
+
